@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+   	box-sizing:border-box;
+}
+
+/* for background images */
+.bg_image_container{
+
+    background-image: url("");
+    height: 420px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+
+/* Nav bar styles  */
+.terms{
+
+    vertical-align: middle;
+    cursor: pointer;
+   	
+}
+
+.terms:hover{
+
+    vertical-align: middle;
+    cursor: pointer;
+   	
+   color:black;
+}
+
+.terms a{
+    text-decoration: none;
+    color:rgb(98, 98, 98);
+  
+}
+
+.menu_title{
+	
+	font-family: 'Evolventa', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    /* font-weight: 400;  */
+}
+
+.menu_li{
+
+    
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color:#595959;
+    cursor: pointer;
+  
+}
+
+.menu_li:hover{
+	
+	color:black;
+	
+}
+
+li a {
+    
+    text-decoration: none;
+}
+
+
+.menu_bar_logo{ 
+
+    height: 30px;
+    width: 180px;
+   	margin-right: 450px;
+    display: inline-block;
+    float:left;
+    padding-left:0px;
+    margin-top:5px;
+    cursor: pointer;
+}
+
+
+.menu_bar_logo a{
+	
+	text-decoration: none;
+	
+}
+
+
+
+/* Headings and content styles */
+
+#headings{
+
+   /*  font-family: "Montserrat", sans-serif;
+    font-weight: 700; */
+   font-family: 'Evolventa', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: black;
+    font-size: 35px;
+   
+
+}
+h2{
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: white;
+    font-size: 25px;
+   
+}
+
+p{
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(85, 85, 85);
+}
+
+p a{
+	
+	 text-decoration: none;
+	 cursor: pointer;
+	 color:rgb(98, 98, 98);
+	  
+}
+
+p a:hover{
+	
+	color:black;
+	
+}
+
+
+/* video background container  */
+
+.video_container{
+	
+	width:1470px;
+	height:720px;
+	background-color:rgba(0,0,0,0.4);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	
+	
+	
+	
+	
+}
+
+
+.content{
+	
+	text-align:center;
+	
+}
+
+.content h1{
+	
+	font-size:55px;
+	color:#ffffff;
+	margin-bottom:50px;
+	
+	
+	
+}
+
+.background-clip{
+	
+	position:absolute;
+	right:0px;
+	bottom:20;
+	top:70;
+	left:0;
+	z-index:-1;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	
+	
+}
+
+
+
+/* landing page texts*/
+
+.tagline{
+
+    font-family: 'Evolventa', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: white;
+    font-size: 30px;
+   
+}
+h5{
+	
+	font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    color:white;
+}
+h5 a{
+	
+	color:white;
+}
+
+/*fade-in-text*/
+.fade-in-text {
+
+    animation: fadeIn 20s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+  
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+

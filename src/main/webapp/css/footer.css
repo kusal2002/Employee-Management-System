@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+
+/* Footer styles*/
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+    
+  background: linear-gradient(109.6deg, rgb(185, 212, 242) 11.2%, rgb(244, 210, 226) 100.3%); 
+   
+   
+ /*  background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);  */
+.footer_text{
+
+    font-size: 13px;
+}
+
+.social_media{
+
+    height: 15px;
+    width: 15px;
+    margin: 8px;
+    display: inline-block;
+}
