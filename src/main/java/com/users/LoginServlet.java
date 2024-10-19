@@ -14,47 +14,64 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
-
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String uemail = request.getParameter("username");
 		String upwd = request.getParameter("password");
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher = null;
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/employee_management_system?useSSL=false", "root", "Saparamadu@123");
-			PreparedStatement pst = con.prepareStatement("select * from users where username= ? and password = ?");
+			
+			PreparedStatement pst = con.prepareStatement("select * from users where username = ? and password = ?");
 			pst.setString(1, uemail);
 			pst.setString(2, upwd);
 
 			ResultSet rs = pst.executeQuery();
 
 			if (rs.next()) {
+				int role = rs.getInt("role");
 				session.setAttribute("name", rs.getString("username"));
-				dispatcher = request.getRequestDispatcher("index.jsp");
+				session.setAttribute("role", role); 
+
+				if (role == 1) {
+					request.setAttribute("status", "success");
+					dispatcher = request.getRequestDispatcher("admin/index.jsp"); 
+
+				} else if (role == 2) {
+					request.setAttribute("status", "success");
+					dispatcher = request.getRequestDispatcher("gmanager/index.jsp"); 
+					
+
+				} else if (role == 3) {
+					request.setAttribute("status", "success");
+					dispatcher = request.getRequestDispatcher("hrmanager/index.jsp");
+					
+
+				}else if (role == 4) {
+					request.setAttribute("status", "success");
+					dispatcher = request.getRequestDispatcher("employee/index.jsp");
+
+				} else {
+					request.setAttribute("status", "invalidRole");
+					dispatcher = request.getRequestDispatcher("/Employee_Management_Systemlogin.jsp");
+				}
 			} else {
 				request.setAttribute("status", "failed");
-				dispatcher = request.getRequestDispatcher("login.jsp");
+				dispatcher = request.getRequestDispatcher("/Employee_Management_Systemlogin.jsp");
 			}
 
 			dispatcher.forward(request, response);
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
-
 }

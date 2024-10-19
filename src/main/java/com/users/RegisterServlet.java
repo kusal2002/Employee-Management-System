@@ -44,15 +44,15 @@ public class RegisterServlet extends HttpServlet {
 			
 			int rowCount = pst.executeUpdate();
 			
-			dispatcher = request.getRequestDispatcher("register.jsp");
+			dispatcher = request.getRequestDispatcher("/Employee_Management_System/register.jsp");
 			if(rowCount > 0 ) {
 				
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/Employee_Management_System/index.jsp");
 				//request.setAttribute("status", "success");
 				
 			}else {
 				request.setAttribute("status", "failed");
-				request.getRequestDispatcher("register.jsp").forward(request, response);
+				request.getRequestDispatcher("/Employee_Management_System/register.jsp").forward(request, response);
 			}
 			
 			dispatcher.forward(request, response);
