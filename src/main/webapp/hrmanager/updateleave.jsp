@@ -94,14 +94,24 @@
 									</div>
 
 									<div class="mb-3">
+										<%
+										if (leaveReason.equals("null")) {
+										%>
 										<label for="exampleInputEmail1" class="form-label">Leave
 											Reason (if applicable)</label> <input type="text"
 											class="form-control" step="0.01" name="leave_reason"
-											value="<%if (leaveReason.equals("null")) {%>none
-														<%} else {%>
-														<%=leaveReason%>
-														<%}%>"
-											id="exampleInputEmail1">
+											value="none" id="exampleInputEmail1">
+										<%
+										} else {
+										%>
+										<label for="exampleInputEmail1" class="form-label">Leave
+											Reason (if applicable)</label> <input type="text"
+											class="form-control" step="0.01" name="leave_reason"
+											value="<%=leaveReason%>" id="exampleInputEmail1">
+
+										<%
+										}
+										%>
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</form>
