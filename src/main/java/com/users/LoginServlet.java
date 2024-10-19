@@ -61,11 +61,11 @@ public class LoginServlet extends HttpServlet {
 
 				} else {
 					request.setAttribute("status", "invalidRole");
-					dispatcher = request.getRequestDispatcher("/Employee_Management_Systemlogin.jsp");
+					dispatcher = request.getRequestDispatcher("/Employee_Management_System/login.jsp");
 				}
 			} else {
 				request.setAttribute("status", "failed");
-				dispatcher = request.getRequestDispatcher("/Employee_Management_Systemlogin.jsp");
+				dispatcher = request.getRequestDispatcher("/Employee_Management_System/login.jsp");
 			}
 
 			dispatcher.forward(request, response);
