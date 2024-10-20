@@ -1,3 +1,4 @@
+<%@page import="com.db.DBConnect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.task.TaskDBUtil"%>
@@ -7,6 +8,42 @@
 <%
 if (session.getAttribute("name") == null) {
 	response.sendRedirect("/Employee_Management_System/login.jsp");
+}
+%>
+
+
+<%@ page import="java.sql.*"%>
+<%
+Statement stmt = null;
+ResultSet rs = null;
+int totalTasks = 0;
+double totalNetPay = 0.0;
+
+try {
+	Connection conn = DBConnect.getConnection();
+
+	stmt = conn.createStatement();
+
+	// Get total employees
+	String totalTasksQuery = "SELECT COUNT(*) AS totalTasks FROM tasks"; // Adjust your table name
+	rs = stmt.executeQuery(totalTasksQuery);
+	if (rs.next()) {
+		totalTasks = rs.getInt("totalTasks");
+	}
+
+	// Get total net pay
+	String totalNetPayQuery = "SELECT SUM(NetPay) AS totalNetPay FROM Payroll";
+	rs = stmt.executeQuery(totalNetPayQuery);
+	if (rs.next()) {
+		totalNetPay = rs.getDouble("totalNetPay");
+	}
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	if (rs != null)
+		rs.close();
+	if (stmt != null)
+		stmt.close();
 }
 %>
 
@@ -42,101 +79,37 @@ if (session.getAttribute("name") == null) {
 				<!--  Row 1 -->
 
 				<div class="row">
-					<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="col-lg-8 d-flex align-items-stretch">
 						<div class="card w-100">
-							<div class="card-body p-4">
-								<div class="mb-4">
-									<h5 class="card-title fw-semibold">Recent Transactions</h5>
+							<div class="row">
+								<!-- Total Employees -->
+								<div class="col-lg-4">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title mb-9 fw-semibold">Total Tasks</h5>
+											<h4 class="fw-semibold mb-3"><%=totalTasks%></h4>
+										</div>
+									</div>
 								</div>
-								<ul class="timeline-widget mb-0 position-relative mb-n5">
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
-											<span class="timeline-badge-border d-block flex-shrink-0"></span>
+
+								<!-- Total Net Pay -->
+								<div class="col-lg-4">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title mb-9 fw-semibold">Total Net Pay</h5>
+											<h4 class="fw-semibold mb-3">
+												$<%=String.format("%.2f", totalNetPay)%></h4>
 										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1">Payment
-											received from John Doe of $385.90</div>
-									</li>
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">10:00
-											am</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-info flex-shrink-0 my-8"></span>
-											<span class="timeline-badge-border d-block flex-shrink-0"></span>
-										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">
-											New sale recorded <a href="javascript:void(0)"
-												class="text-primary d-block fw-normal">#ML-3467</a>
-										</div>
-									</li>
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">12:00
-											am</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-											<span class="timeline-badge-border d-block flex-shrink-0"></span>
-										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1">Payment
-											was made of $64.95 to Michael</div>
-									</li>
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">09:30
-											am</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-warning flex-shrink-0 my-8"></span>
-											<span class="timeline-badge-border d-block flex-shrink-0"></span>
-										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">
-											New sale recorded <a href="javascript:void(0)"
-												class="text-primary d-block fw-normal">#ML-3467</a>
-										</div>
-									</li>
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">09:30
-											am</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
-											<span class="timeline-badge-border d-block flex-shrink-0"></span>
-										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New
-											arrival recorded</div>
-									</li>
-									<li
-										class="timeline-item d-flex position-relative overflow-hidden">
-										<div class="timeline-time text-dark flex-shrink-0 text-end">12:00
-											am</div>
-										<div
-											class="timeline-badge-wrap d-flex flex-column align-items-center">
-											<span
-												class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-										</div>
-										<div class="timeline-desc fs-3 text-dark mt-n1">Payment
-											Done</div>
-									</li>
-								</ul>
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
 					<div class="col-lg-8 d-flex align-items-stretch">
 						<div class="card w-100">
 							<div class="card-body p-4">
-								<h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
+								<h5 class="card-title fw-semibold mb-4">Recent Tasks</h5>
 								<div class="table-responsive">
 									<table class="table text-nowrap mb-0 align-middle">
 										<thead class="text-dark fs-4">
@@ -161,8 +134,9 @@ if (session.getAttribute("name") == null) {
 										</thead>
 										<tbody>
 											<%
+											int userId = Integer.parseInt((String) session.getAttribute("id"));
 											TaskDBUtil taskdb = new TaskDBUtil();
-											List<Task> tasks = taskdb.getAll();
+											List<Task> tasks = taskdb.getAll(userId);
 
 											if (tasks != null && !tasks.isEmpty()) {
 												for (Task task : tasks) {
@@ -216,6 +190,9 @@ if (session.getAttribute("name") == null) {
 							</div>
 						</div>
 					</div>
+
+
+
 				</div>
 
 

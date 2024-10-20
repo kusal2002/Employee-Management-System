@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class updateTaskServlet
@@ -16,6 +17,8 @@ public class updateTaskServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+
 		
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
         String taskname = request.getParameter("taskName");
@@ -30,9 +33,13 @@ public class updateTaskServlet extends HttpServlet {
         boolean isUpdated = taskdb.updateTask(task);
         
         if (isUpdated) {
-            response.sendRedirect("/Employee_Management_System/employee/taskdisplay.jsp");
+        	String alertMessage = "Task data insert successful";
+            response.getWriter().println("<script> alert('" + alertMessage + "'); window.location.href='/Employee_Management_System/gmanager/payrolldisplay.jsp'</script>");
+//    		session.setAttribute("taskstatus", "success");
+//            response.sendRedirect("/Employee_Management_System/employee/taskdisplay.jsp");
         } else {
-            response.getWriter().write("Failed to update task");
+    		session.setAttribute("taskstatus", "failed");
+            response.sendRedirect("/Employee_Management_System/employee/updatetask.jsp");
         }
 	}
 

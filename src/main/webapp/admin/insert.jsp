@@ -12,7 +12,7 @@ if (session.getAttribute("name") == null) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Tasks</title>
+<title>WorkNest</title>
 <link rel="shortcut icon" type="image/png"
 	href="/Employee_Management_System/assets/images/logos/favicon.png" />
 <link rel="stylesheet"
@@ -42,13 +42,13 @@ if (session.getAttribute("name") == null) {
 								<form action="employeeinsert" method="post">
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">User
-											Name</label> <input type="text" class="form-control" name="username"
+											Name</label> <input type="text" class="form-control" name="username" required
 											id="exampleInputEmail1">
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Email</label>
-										<input type="email" class="form-control" name="email"
+										<input type="email" class="form-control" name="email" required
 											id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">
@@ -63,7 +63,7 @@ if (session.getAttribute("name") == null) {
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Password</label>
-										<input type="text" class="form-control" name="password"
+										<input type="text" class="form-control" name="password" required
 											id="exampleInputEmail1">
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>

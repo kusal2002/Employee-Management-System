@@ -30,40 +30,41 @@ public class TaskDBUtil {
 		}
 	}
 
-	public List<Task> getAll() {
-		List<Task> tasks = new ArrayList<>();
+	public List<Task> getAll(int userId) {
+	    List<Task> tasks = new ArrayList<>();
 
-		try {
-			String sql = "SELECT * FROM tasks ORDER BY created_at ASC";
-			con = DBConnect.getConnection();
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+	    try {
+	        String sql = "SELECT * FROM tasks WHERE user_id = ? ORDER BY created_at ASC";
+	        con = DBConnect.getConnection();
+	        PreparedStatement stmt = con.prepareStatement(sql);
+	        stmt.setInt(1, userId);
+	        ResultSet rs = stmt.executeQuery();
 
-			// Iterate through the result set
-			while (rs.next()) {
-				Task task = new Task();
-				task.setTaskid(rs.getInt("task_id")); // Corrected from "taskid" to "task_id"
-				task.setTaskname(rs.getString("title")); // Assuming you're storing task name in the "title" column
-				task.setDescription(rs.getString("description"));
-				task.setStatus(rs.getString("status"));
-				task.setDueDate(rs.getString("due_date"));
-				task.setUserId(rs.getInt("user_id"));
-				tasks.add(task); // Add each task to the list
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null)
-					stmt.close();
-				if (con != null)
-					con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return tasks;
+	        // Iterate through the result set
+	        while (rs.next()) {
+	            Task task = new Task();
+	            task.setTaskid(rs.getInt("task_id"));
+	            task.setTaskname(rs.getString("title"));
+	            task.setDescription(rs.getString("description"));
+	            task.setStatus(rs.getString("status"));
+	            task.setDueDate(rs.getString("due_date"));
+	            task.setUserId(rs.getInt("user_id"));
+	            tasks.add(task); // Add each task to the list
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (stmt != null) stmt.close();
+	            if (con != null) con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return tasks;
 	}
+
+
 
 	public Task getTaskById(int taskId) {
 		Task task = null;

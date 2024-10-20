@@ -37,6 +37,7 @@ public class UpdateServlet extends HttpServlet {
 			List<EmployeeModel> admindetails = EmployeeController.getById(id);
 			request.setAttribute("admindetails", admindetails);
 			
+			
 			String alertMessage = "Data update successful";
 			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='/Employee_Management_System/admin/display.jsp'</script>");
 		}

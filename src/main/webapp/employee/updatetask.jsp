@@ -20,13 +20,17 @@ if (session.getAttribute("name") == null) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Tasks</title>
+<title>WorkNest</title>
 <link rel="shortcut icon" type="image/png"
 	href="/Employee_Management_System/assets/images/logos/favicon.png" />
-<link rel="stylesheet" href="/Employee_Management_System/assets/css/styles.min.css" />
+<link rel="stylesheet"
+	href="/Employee_Management_System/assets/css/styles.min.css" />
 </head>
 
 <body>
+
+
+
 	<!--  Body Wrapper -->
 	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
 		data-navbarbg="skin6" data-sidebartype="full"
@@ -43,7 +47,7 @@ if (session.getAttribute("name") == null) {
 			<div class="container-fluid">
 				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title fw-semibold mb-4">Add New Task</h5>
+						<h5 class="card-title fw-semibold mb-4">Update Task</h5>
 						<div class="card">
 							<div class="card-body">
 
@@ -54,10 +58,12 @@ if (session.getAttribute("name") == null) {
 
 								if (task != null) {
 								%>
-								<form action="/Employee_Management_System/updateTaskServlet" method="post">
+								<form action="/Employee_Management_System/updateTaskServlet"
+									method="post">
 									<input type="hidden" name="task_id"
-										value="<%=task.getTaskid()%>" />
-
+										value="<%=task.getTaskid()%>" hidden /> <input type="text"
+										class="form-control" name="user_id"
+										value="<%=task.getUserId()%>" id="exampleInputEmail1" hidden />
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Task
 											Name</label> <input type="text" class="form-control" name="taskName"
@@ -82,11 +88,7 @@ if (session.getAttribute("name") == null) {
 											Date</label> <input type="date" class="form-control" name="due_date"
 											value="<%=task.getDueDate()%>" id="exampleInputEmail1">
 									</div>
-									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">User
-											Id</label> <input type="text" class="form-control" name="user_id"
-											value="<%=task.getUserId()%>" id="exampleInputEmail1">
-									</div>
+
 
 
 									<button type="submit" class="btn btn-primary">Submit</button>
@@ -106,11 +108,18 @@ if (session.getAttribute("name") == null) {
 			</div>
 		</div>
 	</div>
-	<script src="/Employee_Management_System/assets/libs/jquery/dist/jquery.min.js"></script>
-	<script src="/Employee_Management_System/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+		
+	</script>
+
+	<script
+		src="/Employee_Management_System/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script
+		src="/Employee_Management_System/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/Employee_Management_System/assets/js/sidebarmenu.js"></script>
 	<script src="/Employee_Management_System/assets/js/app.min.js"></script>
-	<script src="/Employee_Management_System/assets/libs/simplebar/dist/simplebar.js"></script>
+	<script
+		src="/Employee_Management_System/assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
 
 </html>

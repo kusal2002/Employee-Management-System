@@ -26,6 +26,8 @@ if (session.getAttribute("name") == null) {
 </head>
 
 <body>
+	<input type="hidden" id="taskstatus"
+		value="<%=session.getAttribute("taskstatus")%>">
 	<!--  Body Wrapper -->
 	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
 		data-navbarbg="skin6" data-sidebartype="full"
@@ -52,7 +54,7 @@ if (session.getAttribute("name") == null) {
 										<h5 class="card-title fw-semibold mb-4">My Task</h5>
 									</div>
 									<div class="col ">
-										<a href="./employeetask.jsp">
+										<a href="/Employee_Management_System/employee/createtask.jsp">
 											<button type="button" class="btn btn-primary m-1 float-end">Add
 												New Task</button>
 										</a>
@@ -88,8 +90,9 @@ if (session.getAttribute("name") == null) {
 										</thead>
 										<tbody>
 											<%
+											int userId = Integer.parseInt((String) session.getAttribute("id"));
 											TaskDBUtil taskdb = new TaskDBUtil();
-											List<Task> tasks = taskdb.getAll();
+											List<Task> tasks = taskdb.getAll(userId);
 
 											if (tasks != null && !tasks.isEmpty()) {
 												for (Task task : tasks) {
@@ -131,9 +134,10 @@ if (session.getAttribute("name") == null) {
 												<td class="border-bottom-0 align-items-center"><a
 													href="/Employee_Management_System/employee/updatetask.jsp?task_id=<%=task.getTaskid()%>">
 														<button type="button" class="btn btn-success m-2">Edit</button>
-												</a> <a href="/Employee_Management_System/employee/deleteTask.jsp?task_id=<%=task.getTaskid()%>" onclick="return deletefunc(this);">
-														<button type="button" class="btn btn-danger m-2"
-															>Delete</button>
+												</a> <a
+													href="/Employee_Management_System/employee/deleteTask.jsp?task_id=<%=task.getTaskid()%>"
+													onclick="return deletefunc(this);">
+														<button type="button" class="btn btn-danger m-2">Delete</button>
 												</a></td>
 
 											</tr>
@@ -157,7 +161,24 @@ if (session.getAttribute("name") == null) {
 			</div>
 		</div>
 	</div>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript">
+		var status = document.getElementById("taskstatus").value;
+		if (status == "failed") {
+			Swal.fire({
+				title : "Update Failed!",
+				text : "Could not update your task.",
+				icon : "error"
+			});
+		} else if (status == "success") {
+			Swal.fire({
+				title : "Update Successful!",
+				text : "Your task has been updated.",
+				icon : "success"
+			});
+		}
+		// Clear the session status attribute after showing the alert
+	<%session.removeAttribute("taskstatus");%>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">

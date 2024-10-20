@@ -5,7 +5,7 @@
 		<div
 			class="brand-logo d-flex align-items-center justify-content-between">
 			<a href="./index.jsp" class="text-nowrap logo-img"> <!--<img src="./assets/images/logos/dark-logo.svg" width="180" alt="" />`  -->
-				<h1 class="card-title fw-semibold">WorkNest</h1>
+				<h1 class="card-title fw-bold">WorkNest</h1>
 
 			</a>
 			<div
@@ -60,7 +60,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Home</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./index.jsp" aria-expanded="false"> <span> <i
+					href="/Employee_Management_System/gmanager/index.jsp" aria-expanded="false"> <span> <i
 							class="ti ti-layout-dashboard"></i>
 					</span> <span class="hide-menu">Dashboard</span>
 				</a></li>
@@ -89,7 +89,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Home</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./index.jsp" aria-expanded="false"> <span> <i
+					href="/Employee_Management_System/hrmanager/index.jsp" aria-expanded="false"> <span> <i
 							class="ti ti-layout-dashboard"></i>
 					</span> <span class="hide-menu">Dashboard</span>
 				</a></li>
@@ -117,7 +117,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Home</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./index.jsp" aria-expanded="false"> <span> <i
+					href="/Employee_Management_System/employee/index.jsp" aria-expanded="false"> <span> <i
 							class="ti ti-layout-dashboard"></i>
 					</span> <span class="hide-menu">Dashboard</span>
 				</a></li>
@@ -125,7 +125,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Task</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="/Employee_Management_System/employee/employeetask.jsp"
+					href="/Employee_Management_System/employee/createtask.jsp"
 					aria-expanded="false"> <span> <i class="ti ti-article"></i>
 					</span> <span class="hide-menu">Create Task</span>
 				</a></li>

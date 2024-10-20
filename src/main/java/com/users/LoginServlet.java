@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 			if (rs.next()) {
 				int role = rs.getInt("role");
 				session.setAttribute("name", rs.getString("username"));
+				session.setAttribute("id", rs.getString("user_id"));
 				session.setAttribute("role", role); 
 
 				if (role == 1) {
@@ -56,16 +57,16 @@ public class LoginServlet extends HttpServlet {
 					
 
 				}else if (role == 4) {
-					request.setAttribute("status", "success");
+					session.setAttribute("status", "success");
 					dispatcher = request.getRequestDispatcher("employee/index.jsp");
 
 				} else {
-					request.setAttribute("status", "invalidRole");
+					request.setAttribute("status", "failed");
 					dispatcher = request.getRequestDispatcher("/Employee_Management_System/login.jsp");
 				}
 			} else {
-				request.setAttribute("status", "failed");
-				dispatcher = request.getRequestDispatcher("/Employee_Management_System/login.jsp");
+				session.setAttribute("status", "failed");
+			    response.sendRedirect("/Employee_Management_System/login.jsp");
 			}
 
 			dispatcher.forward(request, response);

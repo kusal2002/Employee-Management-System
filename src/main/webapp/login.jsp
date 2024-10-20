@@ -3,20 +3,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page</title>
+<title>Login</title>
 <link rel="stylesheet" href="css/loginregister.css">
 </head>
 <body>
 	<input type="hidden" id="status"
-		value="<%=request.getAttribute("status")%>">
-
+		value="<%=session.getAttribute("status")%>">
+	<%
+	session.removeAttribute("status");
+	%>
 
 	<div class="wrapper">
-		<div class="logo">
+		<!-- <div class="logo">
 			<img
 				src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png"
 				alt="">
-		</div>
+		</div> -->
 		<div class="text-center mt-4 name">Login</div>
 		<form class="p-3 mt-3" action="LoginServlet" method="post">
 			<div class="form-field d-flex align-items-center">
@@ -45,17 +47,18 @@
 		var status = document.getElementById("status").value;
 		if (status == "failed") {
 			Swal.fire({
-				title : "Wrong!",
-				text : "You clicked the button!",
-				icon : "success"
+				title : "Login Failed!",
+				text : "Invalid username or password.",
+				icon : "error"
 			});
-		}else if (status == "success") {
+		} else if (status == "success") {
 			Swal.fire({
-				title : "Good job!",
-				text : "You clicked the button!",
+				title : "Login Successful!",
+				text : "Redirecting to your dashboard.",
 				icon : "success"
 			});
 		}
 	</script>
+
 </body>
 </html>

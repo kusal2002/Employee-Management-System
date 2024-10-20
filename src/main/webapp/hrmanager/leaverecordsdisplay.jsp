@@ -52,12 +52,12 @@ if (session.getAttribute("name") == null) {
 								<div class="row align-items-end">
 									<div class="col">
 
-										<h5 class="card-title fw-semibold mb-4">My Task</h5>
+										<h5 class="card-title fw-semibold mb-4">Attendance Sheet</h5>
 									</div>
 									<div class="col ">
-										<a href="/Employee_Management_System/admin/insert.jsp">
+										<a href="/Employee_Management_System/hrmanager/addleave.jsp">
 											<button type="button" class="btn btn-primary m-1 float-end">Add
-												New Employee</button>
+												Leave Record</button>
 										</a>
 									</div>
 

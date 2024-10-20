@@ -12,7 +12,7 @@ if (session.getAttribute("name") == null) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Tasks</title>
+<title>WorkNest</title>
 <link rel="shortcut icon" type="image/png"
 	href="/Employee_Management_System/assets/images/logos/favicon.png" />
 <link rel="stylesheet"
@@ -46,7 +46,7 @@ if (session.getAttribute("name") == null) {
 								String username = request.getParameter("username");
 								String password = request.getParameter("password");
 								String email = request.getParameter("email");
-								String rolee = request.getParameter("role");
+								String roleno = request.getParameter("role");
 								%>
 
 								<form action="employeeupdate" method="post">
@@ -71,14 +71,14 @@ if (session.getAttribute("name") == null) {
 											<option value="3">HR Manager</option>
 											<option value="4">Employee</option> -->
 											<option value="1"
-												<%="1".equals(rolee) ? "selected" : ""%> >Admin</option>
+												<%="1".equals(roleno) ? "selected" : ""%> >Admin</option>
 											<option value="2"
-												<%="2".equals(rolee) ? "selected" : ""%>>General
+												<%="2".equals(roleno) ? "selected" : ""%>>General
 												Manager</option>
 											<option value="3"
-												<%="3".equals(rolee) ? "selected" : ""%>>HR Manager</option>
+												<%="3".equals(roleno) ? "selected" : ""%>>HR Manager</option>
 											<option value="4"
-												<%="4".equals(rolee) ? "selected" : ""%>>Employee</option>
+												<%="4".equals(roleno) ? "selected" : ""%>>Employee</option>
 
 										</select>
 									</div>
