@@ -36,9 +36,13 @@ public class InsertServlet extends HttpServlet {
 			response.getWriter().println("<script> alert('" + alertMessage
 					+ "'); window.location.href='/Employee_Management_System/admin/display.jsp'</script>");
 		} else {
-			session.setAttribute("employeestatus", "failed");
-			RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
-			dis2.forward(request, response);
+			String alertMessage = "Data insert failed";
+			response.getWriter().println("<script> alert('" + alertMessage
+					+ "'); window.location.href='/Employee_Management_System/admin/insert.jsp'</script>");
+			
+			
+			//RequestDispatcher dis2 = request.getRequestDispatcher("/Employee_Management_System/wrong.jsp");
+		//	dis2.forward(request, response);
 		}
 
 	}
