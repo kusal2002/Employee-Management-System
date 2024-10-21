@@ -51,12 +51,6 @@
 				text : "Invalid username or password.",
 				icon : "error"
 			});
-		} else if (status == "success") {
-			Swal.fire({
-				title : "Login Successful!",
-				text : "Redirecting to your dashboard.",
-				icon : "success"
-			});
 		}
 	</script>
 

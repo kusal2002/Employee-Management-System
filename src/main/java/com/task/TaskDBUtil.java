@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.db.DBConnect;
 
-public class TaskDBUtil {
+public class TaskDBUtil implements TaskDAO{
 	Connection con = null;
 	Statement stmt = null;
 

@@ -63,7 +63,7 @@ if (session.getAttribute("name") == null) {
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Password</label>
-										<input type="text" class="form-control" name="password" required
+										<input type="password" class="form-control" name="password" required
 											id="exampleInputEmail1">
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>
