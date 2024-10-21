@@ -5,7 +5,7 @@
 		<div
 			class="brand-logo d-flex align-items-center justify-content-between">
 			<a href="./index.jsp" class="text-nowrap logo-img"> <!--<img src="./assets/images/logos/dark-logo.svg" width="180" alt="" />`  -->
-				<h1 class="card-title fw-bold">WorkNest</h1>
+				<h1 class="card-title fw-bold">E.M.S</h1>
 
 			</a>
 			<div
