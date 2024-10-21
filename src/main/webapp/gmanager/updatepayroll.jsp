@@ -56,12 +56,12 @@
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Pay
-											Date</label> <input type="date" class="form-control" name="payDate"  value="<%=payDate%>"
+											Date</label> <input type="date" class="form-control" name="payDate"  value="<%=payDate%>" required
 											id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Basic
-											Salary</label> <input type="number" class="form-control" step="0.01" value="<%=basicSalary%>"
+											Salary</label> <input type="number" class="form-control" step="0.01" value="<%=basicSalary%>" required
 											name="basicSalary" id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">

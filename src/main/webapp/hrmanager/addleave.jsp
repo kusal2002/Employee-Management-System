@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -14,6 +15,10 @@
 </head>
 
 <body>
+
+	<input type="hidden" id="status"
+		value="<%=session.getAttribute("updatestatus")%>">
+
 	<!--  Body Wrapper -->
 	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
 		data-navbarbg="skin6" data-sidebartype="full"
@@ -36,12 +41,13 @@
 								<form action="insertleave" method="post">
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Employee
-											ID</label> <input type="number" class="form-control"
-											name="employee_id" id="exampleInputEmail1" required>
+											ID</label> <input type="number" class="form-control" required
+											name="employee_id" id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Attendance
-											Date</label> <input type="date" class="form-control" name="attendance_date" required
+											Date</label> <input type="date" class="form-control"
+											name="attendance_date" max="<%=LocalDate.now()%>" required
 											id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">
@@ -65,9 +71,10 @@
 									</div>
 
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Leave Reason (if applicable)</label>
-										<input type="text" class="form-control" step="0.01"
-											name="leave_reason" id="exampleInputEmail1">
+										<label for="exampleInputEmail1" class="form-label">Leave
+											Reason (if applicable)</label> <input type="text"
+											class="form-control" step="0.01" name="leave_reason"
+											id="exampleInputEmail1">
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</form>
