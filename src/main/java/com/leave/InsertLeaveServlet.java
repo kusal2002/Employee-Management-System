@@ -32,8 +32,10 @@ public class InsertLeaveServlet extends HttpServlet {
         } 
         // If insertion fails, redirect to the error page
         else {
-            RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
-            dis2.forward(request, response);
+        	String alertMessage = "Data insert failed";
+			response.getWriter().println("<script> alert('" + alertMessage
+					+ "'); window.location.href='/Employee_Management_System/hrmanager/addleave.jsp'</script>");
+			
         }
     }
 }

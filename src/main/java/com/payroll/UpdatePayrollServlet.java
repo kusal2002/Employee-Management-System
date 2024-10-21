@@ -38,9 +38,10 @@ public class UpdatePayrollServlet extends HttpServlet {
             String alertMessage = "Payroll data update successful";
             response.getWriter().println("<script> alert('" + alertMessage + "'); window.location.href='/Employee_Management_System/gmanager/payrolldisplay.jsp'</script>");
         } else {
-            // If the update fails, forward to the error page
-            RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-            dispatcher.forward(request, response);
+        	String alertMessage = "Data insert failed";
+			response.getWriter().println("<script> alert('" + alertMessage
+					+ "'); window.location.href='/Employee_Management_System/gmanager/addPayroll.jsp'</script>");
+			
         }
     }
 }
