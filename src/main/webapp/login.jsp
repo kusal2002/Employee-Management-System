@@ -30,11 +30,8 @@
 					name="password" id="password" placeholder="Password">
 			</div>
 			<button class="btn mt-3" type="submit">Login</button>
-		</form>
-		<div class="text-center fs-6">
-			<a href="#">Forget password?</a> or <a href="register.jsp">Sign
-				up</a>
-		</div>
+		</form>	
+	
 	</div>
 
 

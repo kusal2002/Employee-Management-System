@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBConnect {
 	private static String url = "jdbc:mysql://localhost:3306/employee_management_system?useSSL=false";
 	private static String user = "root";
-	private static String pass = "Saparamadu@123";
+	private static String pass = "Pllv@2003";
 	private static Connection con;
 
 	public static Connection getConnection() {
