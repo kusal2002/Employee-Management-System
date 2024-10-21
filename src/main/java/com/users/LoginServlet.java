@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.db.DBConnect;
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+	private static Connection con = null;
+	private static PreparedStatement pst = null;
+	private static ResultSet rs = null;
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,11 +32,9 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/employee_management_system?useSSL=false", "root", "Pllv@2003");
-			
-			PreparedStatement pst = con.prepareStatement("select * from users where username = ? and password = ?");
+			con = DBConnect.getConnection();
+		
+			pst = con.prepareStatement("select * from users where username = ? and password = ?");
 			pst.setString(1, uemail);
 			pst.setString(2, upwd);
 
