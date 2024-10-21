@@ -55,7 +55,7 @@ try {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin</title>
+<title>HR Manager</title>
 <link rel="shortcut icon" type="image/png"
 	href="./Employee_Management_System/assets/images/logos/favicon.png" />
 <link rel="stylesheet"
