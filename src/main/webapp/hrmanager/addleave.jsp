@@ -37,11 +37,11 @@
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Employee
 											ID</label> <input type="number" class="form-control"
-											name="employee_id" id="exampleInputEmail1">
+											name="employee_id" id="exampleInputEmail1" required>
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Attendance
-											Date</label> <input type="date" class="form-control" name="attendance_date"
+											Date</label> <input type="date" class="form-control" name="attendance_date" required
 											id="exampleInputEmail1">
 									</div>
 									<div class="mb-3">
